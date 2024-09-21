@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js Example</title>
+    <style>
+        /* 置中顯示 Count */
+        #app {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <!-- Your Vue app content will go here -->
+        <Counter></Counter>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.0/dist/vue.global.prod.js"></script>
+    <script>
+        // Your Vue app logic will go here
+        const { createApp, ref } = Vue;
+
+        const Counter = {
+            template: `
+        <div>
+            <p>Count: {{ count }}</p>
+            <button @click="increment">Increment</button>
+        </div>
+    `,
+            setup() {
+                const count = ref(0);
+                const increment = () => {
+                    count.value++;
+                };
+                return { count, increment };
+            }
+        };
+
+        createApp({
+            components: { Counter }
+        }).mount('#app');
+    </script>
+
+</body>
+</html>
